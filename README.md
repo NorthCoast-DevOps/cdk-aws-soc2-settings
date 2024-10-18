@@ -54,11 +54,13 @@ The project is organized into several stacks, each responsible for a specific as
 
 - `MainStack`: Orchestrates the creation of other stacks
 - `NetworkStack`: Sets up VPC and subnet configurations
-- `NetworkSecurityStack`: Configures AWS Network Firewall
+- `NetworkSecurityStack`: Configures AWS WAF, Shield, and Network Firewall
 - `VulnerabilityAssetStack`: Sets up AWS Inspector for vulnerability assessments
 - `LoggingStack`: Configures CloudTrail and CloudWatch Logs
-- `IdentityAccessStack`: Manages IAM policies and roles
+- `IAMStack`: Manages IAM policies and roles
 - `EncryptionStack`: Implements KMS for data encryption
+- `BackupStack`: Sets up AWS Backup for data recovery
+- `SecurityStack`: Enables GuardDuty and Security Hub
 
 ## Usage
 
@@ -87,6 +89,8 @@ This project implements the following SOC 2 related controls:
    - VPC with public and private subnets
    - AWS Network Firewall for traffic filtering
    - Security Groups and Network ACLs
+   - AWS WAF (Web Application Firewall) for application layer protection
+   - AWS Shield for DDoS protection
 
 2. Vulnerability Management:
    - AWS Inspector for automated vulnerability assessments
@@ -95,6 +99,7 @@ This project implements the following SOC 2 related controls:
 3. Identity and Access Management:
    - IAM policies and roles with least privilege principle
    - Multi-factor authentication (MFA) enforcement
+   - Strong password policy
 
 4. Encryption and Data Protection:
    - AWS Key Management Service (KMS) for encryption key management
@@ -109,6 +114,31 @@ This project implements the following SOC 2 related controls:
 6. Compliance and Auditing:
    - AWS Config for resource inventory and compliance rules
    - AWS Security Hub for security posture management
+
+7. Backup and Recovery:
+   - AWS Backup for automated backups and retention management
+
+8. Application Security:
+   - Automatic association of WAF WebACL with new ALBs and API Gateways
+
+9. Asset Management:
+   - AWS Systems Manager for inventory and patch management
+
+10. Incident Response:
+    - GuardDuty and Security Hub for threat detection and incident management
+
+11. Change Management:
+    - CloudTrail for tracking changes to AWS resources
+
+12. Risk Assessment:
+    - Regular vulnerability scans with AWS Inspector
+
+13. Third-Party Management:
+    - Controlled access through IAM roles and policies
+
+14. Business Continuity and Disaster Recovery:
+    - Multi-AZ deployments in VPC
+    - Regular backups with AWS Backup
 
 ## Customization
 
