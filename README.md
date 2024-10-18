@@ -15,6 +15,7 @@ This repository contains AWS CDK code in Python to help set up and maintain vari
 7. [Clean Up](#clean-up)
 8. [Contributing](#contributing)
 9. [License](#license)
+10. [Disclaimer](#disclaimer)
 
 ## Prerequisites
 
@@ -55,6 +56,9 @@ The project is organized into several stacks, each responsible for a specific as
 - `NetworkStack`: Sets up VPC and subnet configurations
 - `NetworkSecurityStack`: Configures AWS Network Firewall
 - `VulnerabilityAssetStack`: Sets up AWS Inspector for vulnerability assessments
+- `LoggingStack`: Configures CloudTrail and CloudWatch Logs
+- `IdentityAccessStack`: Manages IAM policies and roles
+- `EncryptionStack`: Implements KMS for data encryption
 
 ## Usage
 
@@ -70,6 +74,11 @@ The project is organized into several stacks, each responsible for a specific as
    cdk deploy --all
    ```
 
+4. To deploy a specific stack:
+   ```
+   cdk deploy StackName
+   ```
+
 ## Implemented Controls
 
 This project implements the following SOC 2 related controls:
@@ -77,11 +86,29 @@ This project implements the following SOC 2 related controls:
 1. Network Security:
    - VPC with public and private subnets
    - AWS Network Firewall for traffic filtering
+   - Security Groups and Network ACLs
 
 2. Vulnerability Management:
    - AWS Inspector for automated vulnerability assessments
+   - Amazon GuardDuty for threat detection
 
-3. (Add other implemented controls as they are developed)
+3. Identity and Access Management:
+   - IAM policies and roles with least privilege principle
+   - Multi-factor authentication (MFA) enforcement
+
+4. Encryption and Data Protection:
+   - AWS Key Management Service (KMS) for encryption key management
+   - S3 bucket encryption
+   - EBS volume encryption
+
+5. Logging and Monitoring:
+   - AWS CloudTrail for API activity logging
+   - Amazon CloudWatch Logs for centralized logging
+   - CloudWatch Alarms for monitoring critical metrics
+
+6. Compliance and Auditing:
+   - AWS Config for resource inventory and compliance rules
+   - AWS Security Hub for security posture management
 
 ## Customization
 
@@ -90,6 +117,7 @@ To customize the infrastructure according to your specific SOC 2 requirements:
 1. Modify the stack files in the `aws_soc2_settings` directory.
 2. Adjust parameters such as VPC CIDR ranges, subnet configurations, or firewall rules in the respective stack files.
 3. Add or remove resources as needed to meet your specific compliance requirements.
+4. Update the `cdk.json` file to include any new context parameters or configuration options.
 
 ## Clean Up
 
@@ -110,10 +138,12 @@ Contributions to improve the project are welcome. Please follow these steps:
 5. Push to the branch (`git push origin feature/AmazingFeature`)
 6. Open a Pull Request
 
+Please ensure your code adheres to the project's coding standards and includes appropriate tests.
+
 ## License
 
-[Specify your license here]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Disclaimer
 
-This project is intended to assist with SOC 2 compliance but does not guarantee full compliance. Always consult with a certified auditor or compliance expert to ensure your AWS environment fully meets SOC 2 requirements.
+This project is intended to assist with SOC 2 compliance but does not guarantee full compliance. Always consult with a certified auditor or compliance expert to ensure your AWS environment fully meets SOC 2 requirements. The authors and contributors of this project are not responsible for any compliance failures or security breaches that may occur in your AWS environment.
